@@ -19,7 +19,11 @@
 		C03546882983447300CCB8DF /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = C03546872983447300CCB8DF /* AlamofireNetworkActivityLogger */; };
 		C035468B2983459E00CCB8DF /* SnapKitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035468A2983459E00CCB8DF /* SnapKitable.swift */; };
 		C03546982984C2B200CCB8DF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03546972984C2B200CCB8DF /* NetworkService.swift */; };
-		C035469D2984C51C00CCB8DF /* LiturgiaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035469C2984C51C00CCB8DF /* LiturgiaModel.swift */; };
+		C035469D2984C51C00CCB8DF /* LiturgiaDiaria.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035469C2984C51C00CCB8DF /* LiturgiaDiaria.swift */; };
+		C046BEB7299D5C7400EA84F6 /* QueryDocumentSnapshot+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C046BEB6299D5C7400EA84F6 /* QueryDocumentSnapshot+Extension.swift */; };
+		C0626446299D1E240032D143 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0626445299D1E230032D143 /* GoogleService-Info.plist */; };
+		C0626449299D1F2F0032D143 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0626448299D1F2F0032D143 /* FirebaseAnalyticsSwift */; };
+		C062644B299D1F2F0032D143 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C062644A299D1F2F0032D143 /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +38,9 @@
 		C035467E2983432600CCB8DF /* LiturgiaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiturgiaViewController.swift; sourceTree = "<group>"; };
 		C035468A2983459E00CCB8DF /* SnapKitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKitable.swift; sourceTree = "<group>"; };
 		C03546972984C2B200CCB8DF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		C035469C2984C51C00CCB8DF /* LiturgiaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiturgiaModel.swift; sourceTree = "<group>"; };
+		C035469C2984C51C00CCB8DF /* LiturgiaDiaria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiturgiaDiaria.swift; sourceTree = "<group>"; };
+		C046BEB6299D5C7400EA84F6 /* QueryDocumentSnapshot+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryDocumentSnapshot+Extension.swift"; sourceTree = "<group>"; };
+		C0626445299D1E230032D143 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C062644B299D1F2F0032D143 /* FirebaseFirestoreSwift in Frameworks */,
+				C0626449299D1F2F0032D143 /* FirebaseAnalyticsSwift in Frameworks */,
 				C03546882983447300CCB8DF /* AlamofireNetworkActivityLogger in Frameworks */,
 				C03546822983444700CCB8DF /* SnapKit in Frameworks */,
 				C03546852983446000CCB8DF /* Alamofire in Frameworks */,
@@ -70,6 +78,7 @@
 		C035466129833C0B00CCB8DF /* ParoquiaSaoRoque */ = {
 			isa = PBXGroup;
 			children = (
+				C0626445299D1E230032D143 /* GoogleService-Info.plist */,
 				C035469B2984C51300CCB8DF /* Model */,
 				C035468C29834A7E00CCB8DF /* Network */,
 				C03546892983458F00CCB8DF /* Infra */,
@@ -104,6 +113,7 @@
 		C03546892983458F00CCB8DF /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				C046BEB5299D5C4700EA84F6 /* Extension */,
 				C035468A2983459E00CCB8DF /* SnapKitable.swift */,
 			);
 			path = Infra;
@@ -120,9 +130,17 @@
 		C035469B2984C51300CCB8DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C035469C2984C51C00CCB8DF /* LiturgiaModel.swift */,
+				C035469C2984C51C00CCB8DF /* LiturgiaDiaria.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C046BEB5299D5C4700EA84F6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C046BEB6299D5C7400EA84F6 /* QueryDocumentSnapshot+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +163,8 @@
 				C03546812983444700CCB8DF /* SnapKit */,
 				C03546842983446000CCB8DF /* Alamofire */,
 				C03546872983447300CCB8DF /* AlamofireNetworkActivityLogger */,
+				C0626448299D1F2F0032D143 /* FirebaseAnalyticsSwift */,
+				C062644A299D1F2F0032D143 /* FirebaseFirestoreSwift */,
 			);
 			productName = ParoquiaSaoRoque;
 			productReference = C035465F29833C0B00CCB8DF /* ParoquiaSaoRoque.app */;
@@ -178,6 +198,7 @@
 				C03546802983444700CCB8DF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C03546832983446000CCB8DF /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C03546862983447300CCB8DF /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */,
+				C0626447299D1F2F0032D143 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C035466029833C0B00CCB8DF /* Products */;
 			projectDirPath = "";
@@ -195,6 +216,7 @@
 			files = (
 				C035466F29833C0E00CCB8DF /* LaunchScreen.storyboard in Resources */,
 				C035466C29833C0E00CCB8DF /* Assets.xcassets in Resources */,
+				C0626446299D1E240032D143 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,9 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C035469D2984C51C00CCB8DF /* LiturgiaModel.swift in Sources */,
+				C035469D2984C51C00CCB8DF /* LiturgiaDiaria.swift in Sources */,
 				C0354679298342B500CCB8DF /* LiturgiaView.swift in Sources */,
 				C035466329833C0B00CCB8DF /* AppDelegate.swift in Sources */,
+				C046BEB7299D5C7400EA84F6 /* QueryDocumentSnapshot+Extension.swift in Sources */,
 				C035468B2983459E00CCB8DF /* SnapKitable.swift in Sources */,
 				C035467D298342CA00CCB8DF /* LiturgiaViewModel.swift in Sources */,
 				C035467F2983432600CCB8DF /* LiturgiaViewController.swift in Sources */,
@@ -446,6 +469,14 @@
 				version = 3.4.0;
 			};
 		};
+		C0626447299D1F2F0032D143 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 9.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -463,6 +494,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C03546862983447300CCB8DF /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
 			productName = AlamofireNetworkActivityLogger;
+		};
+		C0626448299D1F2F0032D143 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0626447299D1F2F0032D143 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		C062644A299D1F2F0032D143 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0626447299D1F2F0032D143 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
