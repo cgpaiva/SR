@@ -14,10 +14,12 @@ protocol SnapKitable {
     func configHierarchy()
     
     func setupViews()
+    func render()
 }
 
 extension SnapKitable {
     func setupViews() {
+        render()
         configHierarchy()
         setupConstraints()
         configViews()

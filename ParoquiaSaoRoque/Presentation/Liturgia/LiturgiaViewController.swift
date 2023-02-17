@@ -7,15 +7,22 @@
 
 import Foundation
 import UIKit
+import MaterialComponents
 
 
 class LiturgiaViewController: UIViewController {
     
     let service: NetworkServiceProtocol
-    let viewModel: LiturgiaViewModelProtocol
+    var theView: LiturgiaView?
     
     override func loadView() {
         self.view = LiturgiaView()
+        
+        guard let secureView = view else { return }
+        guard let liturgiaView = secureView as? LiturgiaView else { return }
+        self.theView = liturgiaView
+        theView?.liturgiaTabBar.tabBarDelegate = self
+
     }
     
     override func viewDidLoad() {
@@ -24,25 +31,44 @@ class LiturgiaViewController: UIViewController {
     }
     
     private func loadData() {
-        service.request { (
-            result: Result<Liturgia, Error>) in
+        service.request(router: .liturgia(date: "15-02-2023")) { (
+            result: Result<LiturgiaDiaria, Error>) in
             
             switch result {
             case .success(let liturgia):
-                print("")
+                self.theView?.viewModel = LiturgiaViewModel(liturgia: liturgia)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-    init(service: NetworkServiceProtocol, viewModel: LiturgiaViewModelProtocol) {
+    init(service: NetworkServiceProtocol) {
          self.service = service
-         self.viewModel = viewModel
          super.init(nibName: nil, bundle: nil)
      }
      
      required init?(coder: NSCoder) {
          fatalError("init(coder:) has not been implemented")
      }
+}
+
+extension LiturgiaViewController: MDCTabBarViewDelegate, UIScrollViewDelegate {
+    
+    func tabBarView(_ tabBar: MDCTabBarView, shouldSelect item: UITabBarItem) -> Bool {
+        return true
+    }
+    
+    func tabBarView(_ tabBarView: MDCTabBarView, didSelect item: UITabBarItem) {
+        switch item.tag {
+        case 0:
+            theView?.updateTab(tabType: .leituras)
+        case 1:
+            theView?.updateTab(tabType: .salmo)
+        case 2:
+            theView?.updateTab(tabType: .evangelho)
+        default:
+            break;
+        }
+    }
 }

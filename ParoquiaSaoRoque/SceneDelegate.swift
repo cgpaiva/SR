@@ -17,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                window = UIWindow(frame: windowScene.coordinateSpace.bounds)
                window?.windowScene = windowScene
                window?.rootViewController = LiturgiaViewController(
-                service: NetworkService(),
-                viewModel: LiturgiaViewModel()
+                service: NetworkService()
                )
                window?.makeKeyAndVisible()
     }

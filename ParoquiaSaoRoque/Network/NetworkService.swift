@@ -11,35 +11,26 @@ import FirebaseFirestore
 import FirebaseCore
 
 protocol NetworkServiceProtocol {
-    func request<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void)
+    func request<T: Codable>(router: SRRouter, completion: @escaping (Result<T, Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
-    func request<T>(completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-
-        let firestoreDb = Firestore.firestore()
+    func request<T>(router: SRRouter, completion: @escaping (Result<T, Error>) -> Void) where T : Codable {
         
-        let liturgiaCollection = firestoreDb.collection("liturgiaDiaria").document("15-02-2023")
-        
-        liturgiaCollection.getDocument { snapshot, error in
-    
-            try! snapshot?.decoded()
+        router.reference.getDocument { snapshot, error in
             
-            if let document = snapshot, document.exists {
-                do {
-                    
-//                    let jsonData = try JSONSerialization.data(withJSONObject: document.data(), options: [])
-//                    let evangelho = try JSONDecoder().decode(LiturgiaDiaria.self, from: jsonData)
-//                    print(try! JSONEncoder().encode(evangelho))
-                    
-                    
-                } catch {
-                    print("Falha no parse")
-                }
-            } else {
-                print("Documento nao encontrado")
+            guard let document = snapshot, document.exists else { return }
+            guard let data = document.data() else { return }
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+                let response = try JSONDecoder().decode(T.self, from: jsonData)
+                
+                completion(.success(response))
+                
+            } catch {
+                completion(.failure(SRError.genericError.error))
             }
         }
-        
     }
 }
